@@ -5,10 +5,18 @@ using UnityEngine;
 
 public class Driver : MonoBehaviour
 {
-    [SerializeField] float steerSpeed = 300f;
-    [SerializeField] float moveSpeed = 5f;
+  [SerializeField] float steerSpeed = 300f;
+  [SerializeField] float moveSpeed = 5f;
 
-    Wheel[] wheels;
+  private VehicleBehavior getVehicleBehavior() {
+    if (_vehicleBehavior == null) {
+      _vehicleBehavior = this.GetComponent<VehicleBehavior>();
+    }
+    return _vehicleBehavior;
+  }
+  private VehicleBehavior _vehicleBehavior;
+
+  Wheel[] wheels;
   void Start(){
     wheels = GetComponentsInChildren<Wheel>();
     Debug.Log("Found wheels: " + wheels.Length);
@@ -29,7 +37,7 @@ public class Driver : MonoBehaviour
 
       if (Mathf.Abs(moveAmount) > 0f) {
         transform.Rotate(0f, 0f, -steerAmount * steerSpeed);
-        transform.Translate(0f, moveAmount * moveSpeed, 0f);
+        transform.Translate(0f, moveAmount * moveSpeed * getVehicleBehavior().getCurrentTerrainSpeedFactor(), 0f);
       }
   }
 
