@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,4 +20,9 @@ public class VehicleBehavior : MonoBehaviour {
     };
     return DEFAULT_TERRAIN_SPEED_FACTOR;
   }
+
+  public bool isPlayerVehicle() {
+    return gameObject.GetComponentInChildren<Driver>() != null;
+  }
+
 }
