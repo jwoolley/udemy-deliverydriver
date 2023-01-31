@@ -20,6 +20,7 @@ public class Collision : MonoBehaviour
       VehicleBehavior vBehavior = gameObject.GetComponent<VehicleBehavior>();
       TerrainBehavior tBehavior = other.gameObject.GetComponent<TerrainBehavior>();
       PickupBehavior pBehavior = other.gameObject.GetComponent<PickupBehavior>();
+      ZoneBehavior zBehavior = other.gameObject.GetComponent<ZoneBehavior>();
 
       if (vBehavior != null && tBehavior != null) {
         vBehavior.pushTerrainBehavior(tBehavior);
@@ -28,10 +29,12 @@ public class Collision : MonoBehaviour
       if (gameAgent != null && pBehavior != null) {
         gameAgent.pickupObject(pBehavior);
       }
+
+      if (gameAgent != null && zBehavior != null) {
+        gameAgent.enterZone(zBehavior);
+      }
     }
-
-      
-
+    
     // TODO: change to use PickupBehavior / ZoneBehavior
     switch (other.tag) {
       case "Depot":
@@ -43,12 +46,19 @@ public class Collision : MonoBehaviour
   }
 
   private void OnTriggerExit2D(Collider2D other) {
+    GameAgent gameAgent = gameObject.GetComponent<GameAgent>();
+    ZoneBehavior zBehavior = other.gameObject.GetComponent<ZoneBehavior>();
+
     if (other != null) {
       VehicleBehavior vBehavior = this.gameObject.GetComponent<VehicleBehavior>();
       TerrainBehavior tBehavior = other.gameObject.GetComponent<TerrainBehavior>();
       if (vBehavior != null && tBehavior != null) {
         vBehavior.removeTerrainBehavior(tBehavior);
       }
+    }
+
+    if (gameAgent != null && zBehavior != null) {
+      gameAgent.exitZone(zBehavior);
     }
   }
 }
