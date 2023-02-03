@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class LevelSceneManager : SceneManager
-{
+public class LevelSceneManager : SceneManager {
     public static LevelStateManager _levelStateManager;
     
     static public LevelStateManager getLevelStateManager() {
