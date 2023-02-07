@@ -13,4 +13,12 @@ public class GameAgent : MonoBehaviour {
   public void exitZone(ZoneBehavior zone) {
     zone.onExit(this);
   }
+
+  public VehicleBehavior getVehicleBehavior() {
+    VehicleBehavior vBehavior = gameObject.GetComponent<VehicleBehavior>();
+    if (vBehavior == null ) {
+      Debug.LogWarning("GameAgent " + gameObject.name + " is missing VehicleBehavior");
+    }
+    return vBehavior;
+  }
 }

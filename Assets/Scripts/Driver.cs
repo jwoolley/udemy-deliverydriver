@@ -34,7 +34,8 @@ public class Driver : MonoBehaviour
 
     if (Mathf.Abs(moveAmount) > 0f) {
       transform.Rotate(0f, 0f, -steerAmount * steerSpeed);
-      transform.Translate(0f, moveAmount * moveSpeed * getVehicleBehavior().getCurrentTerrainSpeedFactor(), 0f);
+      VehicleBehavior vehicleBehavior= getVehicleBehavior();
+      transform.Translate(0f, moveAmount * moveSpeed * vehicleBehavior.getCurrentTerrainSpeedFactor() * vehicleBehavior.getCurrentBoostSpeedFactor(), 0f);
     }
   }
 
