@@ -38,7 +38,7 @@ public class Collision : MonoBehaviour
     // TODO: change to use PickupBehavior / ZoneBehavior
     switch (other.tag) {
       case "Depot":
-        Debug.Log("Package dropped off");
+        Debug.Log("Entered depot");
         break;
       default:
         break;

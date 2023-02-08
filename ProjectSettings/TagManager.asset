@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Depot
   - Package
+  - CompletedOverlay
   layers:
   - Default
   - TransparentFX
