@@ -33,6 +33,9 @@ public class LevelStateManager : MonoBehaviour {
 
   private void onPickupPackage(Parcel parcel) {
     playerGameAgent.onParcelPickup(parcel);
+    // TODO: abstract this call through a UI layer which delegates to
+    //        DeliveryTimerConfig.onPickup()
+    DeliveryTimerConfig.getInstance().onPickup(parcel);
     Debug.Log("Picked up package! Parcel: "
       + (parcel != null
       ? parcel.gameObject.name
@@ -41,6 +44,8 @@ public class LevelStateManager : MonoBehaviour {
 
   private void onDropPackage(Parcel parcel) {
     playerGameAgent.onParcelDropOff(parcel);
+
+    DeliveryTimerConfig.getInstance().onDropoff(parcel);
     Debug.Log("Dropped off package!");
   }
   void Awake() {
