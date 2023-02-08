@@ -43,7 +43,7 @@ public class LevelStateManager : MonoBehaviour {
     playerGameAgent.onParcelDropOff(parcel);
     Debug.Log("Dropped off package!");
   }
-  void Start() {
+  void Awake() {
     if (_instance == null) {
       _instance = this;
     } else {

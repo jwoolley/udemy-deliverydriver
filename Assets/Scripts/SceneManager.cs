@@ -4,8 +4,7 @@ public abstract class SceneManager : MonoBehaviour
 {
     
     private static SceneManager _instance;
-    // Start is called before the first frame update
-    void Start() {
+    void Awake() {
         if (_instance == null) {
           _instance = this;
         } else {
