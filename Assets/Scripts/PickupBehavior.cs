@@ -10,6 +10,8 @@ abstract public class PickupBehavior : MonoBehaviour {
       Debug.LogWarning("PickupBehavior attached to GameObject without attached collider: " + gameObject.name);
     }
   }
-
+  public virtual bool isPickupable() {
+    return true;
+  }
   public abstract void onPickup(GameAgent pickerUpper);
 }

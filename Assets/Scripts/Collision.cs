@@ -25,7 +25,8 @@ public class Collision : MonoBehaviour
         vBehavior.pushTerrainBehavior(tBehavior);
       }
 
-      if (gameAgent != null && pBehavior != null) {
+      if (gameAgent != null && pBehavior != null
+        && pBehavior.isPickupable()) {
         gameAgent.pickupObject(pBehavior);
       }
 

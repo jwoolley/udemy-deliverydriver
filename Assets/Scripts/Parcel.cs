@@ -1,15 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Parcel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    DepotZoneBehavior depot;
+
+    [SerializeField]
+    Color32 pickupTintColor = Color.white;
+  // Start is called before the first frame update
+
+
+  public DepotZoneBehavior getDepot() {
+    return depot;
+  }
+  public Color32 getPickupTintColor() {
+    return pickupTintColor;
+  }
+
+  void Start()
     {
         
     }
-
     // Update is called once per frame
     void Update()
     {

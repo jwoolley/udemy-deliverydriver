@@ -20,8 +20,7 @@ public class PlayerGameAgent : GameAgent
   public void onParcelPickup(Parcel parcel) {
     // TODO: get color based off of parcel instead
     this.parcel = parcel;
-    Color32 tintColor = new Color32(255, 100, 0, 0);
-    getSpriteTinter().setTint(tintColor);
+    getSpriteTinter().setTint(parcel.getPickupTintColor());
   }
 
   public Parcel getParcel() {
